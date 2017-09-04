@@ -72,7 +72,7 @@ class RHSNotifications_Channel_Hooks {
     function comment_post($comment_id) {
         $c = get_comment($comment_id);
         global $RHSFollowPost;
-        $RHSFollowPost->toggle_follow_post($c->comment_post_ID, $c->user_id);
+        $RHSFollowPost->add_follow_post($c->comment_post_ID, $c->user_id);
     }
     
     /**
