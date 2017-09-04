@@ -67,7 +67,7 @@ class RHSNotifications_Channel_Hooks {
     }
     
     /**
-     * Quando um novo comentário é feito, o autor do comentário entra no canal do post
+     * Quando um novo comentário é feito, o autor do comentário passa a seguir o post
      */
     function comment_post($comment_id) {
         $c = get_comment($comment_id);
