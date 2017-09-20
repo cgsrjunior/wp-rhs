@@ -22,22 +22,11 @@ before_install:
   - pwd
   - ls -la
   - cp tests/wordpress-tests-lib/wp-tests-config-sample.php tests/wordpress-tests-lib/wp-tests-config.php
-  #- mv public/htaccess-sample public/htaccess
 
 install:
-  #- composer self-update
-  - composer install
-
-before_script:
-  #- curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-  #- php wp-cli.phar --info
-  #- chmod +x wp-cli.phar  
-  #- sudo mv wp-cli.phar /usr/local/bin/wp 
+  - composer install 
 
 script:
-  - phpunit
-  #- phpunit tets
-  #- ./vendor/bin/phpunit
   - ./run-tests.sh
 
 after_success:
