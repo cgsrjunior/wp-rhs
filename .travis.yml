@@ -20,11 +20,13 @@ services:
 before_install:  
   - mysql -e 'CREATE DATABASE IF NOT EXISTS rhs_test;'
   - mysql -e 'CREATE DATABASE IF NOT EXISTS wp_rhs;'
+  - cd wp_rhs
+  - pwd
   - cp tests/wordpress-tests-lib/wp-tests-config-sample.php tests/wordpress-tests-lib/wp-tests-config.php
   #- mv public/htaccess-sample public/htaccess
 
 install:
-  - composer self-update
+  #- composer self-update
   - composer install
 
 before_script:
@@ -34,10 +36,10 @@ before_script:
   - sudo mv wp-cli.phar /usr/local/bin/wp 
 
 script:
-  - phpunit
-  - phpunit tets
-  - ./vendor/bin/phpunit
-  #- ./run-tests.sh
+  #- phpunit
+  #- phpunit tets
+  #- ./vendor/bin/phpunit
+  - ./run-tests.sh
 
 after_success:
   - openssl aes-256-cbc -K $encrypted_02c37e8cba41_key -iv $encrypted_02c37e8cba41_iv -in deploy_rsa.enc -out deploy_rsa -d
