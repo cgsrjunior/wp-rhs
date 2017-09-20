@@ -18,7 +18,7 @@ class FollowTest extends RHS_UnitTestCase {
 	function test_toggle_follow() {
         global $RHSFollow;
 
-        $this->assertEquals(2, $RHSFollow->toggle_follow(self::$users['contributor'][0], self::$users['contributor'][1]));
+        $this->assertEquals(5, $RHSFollow->toggle_follow(self::$users['contributor'][0], self::$users['contributor'][1]));
         $this->assertEquals(1, $RHSFollow->toggle_follow(self::$users['contributor'][0], self::$users['contributor'][1]));
         $this->assertEquals(2, $RHSFollow->toggle_follow(self::$users['contributor'][0], self::$users['contributor'][1]));
     }
