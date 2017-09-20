@@ -20,8 +20,8 @@ services:
 before_install:  
   - mysql -e 'CREATE DATABASE IF NOT EXISTS rhs_test;'
   - mysql -e 'CREATE DATABASE IF NOT EXISTS wp_rhs;'
-  - mv public/wp-config-sample.php public/wp-config.php
-  - mv public/htaccess-sample public/htaccess
+  - mv tests/wordpress-tests-lib/wp-config-sample.php tests/wordpress-tests-lib/wp-config.php
+  #- mv public/htaccess-sample public/htaccess
 
 install:
   - composer self-update
