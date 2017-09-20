@@ -2,17 +2,22 @@ sudo: false
 
 language: php 
   
-php:
-  - 7.1
-  - hhvm
-  - nightly
-
 matrix:
-  allow_failures:
+  include:
     - php: 7.1
-    - php: hhvm
-    - php: nightly
-  fast_finish: true  
+      env: WP_VERSION=latest
+    - php: 7.0
+      env: WP_VERSION=latest
+    - php: 5.6
+      env: WP_VERSION=4.4
+    - php: 5.6
+      env: WP_VERSION=latest
+    - php: 5.6
+      env: WP_VERSION=trunk
+    - php: 5.6
+      env: WP_TRAVISCI=phpcs
+    - php: 5.3
+      env: WP_VERSION=latest 
   
 services:
   - mysql
@@ -29,14 +34,35 @@ install:
 
 before_script:
   - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+  - php wp-cli.phar --info
   - chmod +x wp-cli.phar  
-  - sudo mv wp-cli.phar /usr/local/bin/wp 
+  - sudo mv wp-cli.phar /usr/local/bin/wp
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - |
+    if [[ ! -z "$WP_VERSION" ]] ; then
+      bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+      if [[ ${TRAVIS_PHP_VERSION:0:2} == "7." ]]; then
+        composer global require "phpunit/phpunit=5.7.*"
+      else
+        composer global require "phpunit/phpunit=4.8.*"
+      fi
+    fi
+  - |
+    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
+      composer global require wp-coding-standards/wpcs
+      phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
+    fi
 
 script:
-  - phpunit
-  #- phpunit tests
-  #- ./vendor/bin/phpunit tests
-  #- ./vendor/phpunit/phpunit/phpunit
+  - |
+    if [[ ! -z "$WP_VERSION" ]] ; then
+      phpunit
+      WP_MULTISITE=1 phpunit
+    fi
+  - |
+    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
+      phpcs --standard=phpcs.ruleset.xml $(find . -name '*.php')
+    fi
   #- ./run-tests.sh
 
 after_success:
@@ -49,6 +75,8 @@ after_success:
 cache:
   directories:
     - vendor
+    - composer
+    - $HOME/.composer/cache
     - $HOME/.cache/composer
 
 notifications:
