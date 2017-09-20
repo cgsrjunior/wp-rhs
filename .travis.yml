@@ -20,6 +20,8 @@ services:
 before_install:  
   - mysql -e 'CREATE DATABASE IF NOT EXISTS rhs_test;'
   - mysql -e 'CREATE DATABASE IF NOT EXISTS wp_rhs;'
+  - pwd
+  - ls -la
   - cd wp_rhs
   - pwd
   - cp tests/wordpress-tests-lib/wp-tests-config-sample.php tests/wordpress-tests-lib/wp-tests-config.php
@@ -52,7 +54,6 @@ cache:
   directories:
     - vendor
     - composer
-    - $HOME/.composer/cache
     - $HOME/.cache/composer
 
 notifications:
