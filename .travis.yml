@@ -11,10 +11,12 @@ matrix:
   - php: nightly
   fast_finish: true
 addons:
-  - ssh_know_hosts: web.redehumanizasus.net
+- ssh_know_hosts: web.redehumanizasus.net
 services:
 - mysql
 before_install:
+- openssl aes-256-cbc -K $encrypted_9d4b6ba88ed7_key -iv $encrypted_9d4b6ba88ed7_iv
+  -in deploy_key.enc -out deploy_key -d
 - echo -e "Host web.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - mysql -e 'CREATE DATABASE IF NOT EXISTS rhs_test;'
 - pwd
@@ -24,7 +26,7 @@ install:
 - composer install
 script:
 - "./run-tests.sh"
-after_success: 
+after_success:
 - openssl aes-256-cbc -K $encrypted_9d4b6ba88ed7_key -iv $encrypted_9d4b6ba88ed7_iv
   -in deploy_key.enc -out deploy_key -d
 - eval "$(ssh-agent -s)"
