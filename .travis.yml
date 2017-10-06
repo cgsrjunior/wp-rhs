@@ -32,7 +32,7 @@ after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 deploy_key
 - ssh-add  deploy_key
-- ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "pwd"
+- ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "sh deploy.sh"
 cache:
   directories:
   - vendor
