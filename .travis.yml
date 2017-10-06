@@ -15,6 +15,7 @@ addons:
 services:
 - mysql
 before_install:
+- echo -e "Host migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - mysql -e 'CREATE DATABASE IF NOT EXISTS rhs_test;'
 - pwd
 - ls -la
@@ -29,7 +30,6 @@ after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 deploy_key
 - ssh-add  deploy_key
-- echo -e "Host migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 cache:
   directories:
   - vendor
