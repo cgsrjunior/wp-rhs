@@ -10,10 +10,8 @@ matrix:
   - php: hhvm
   - php: nightly
   fast_finish: true
- 
- addons:
+addons:
   - ssh_know_hosts: migracao.redehumanizasus.net
-  
 services:
 - mysql
 before_install:
