@@ -41,8 +41,8 @@ before deploy:
 
 deploy:
 - provider: script
-    - skip_cleanup: true
-    - script: ssh -p22 migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls" 
+  skip_cleanup: true
+  script: ssh -p22 migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls" 
     on:
       branch: develop
 
