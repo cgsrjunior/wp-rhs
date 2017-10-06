@@ -44,7 +44,7 @@ deploy:
   skip_cleanup: true
   script: ssh -p22 migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls" 
   on:
-      branch: develop
+      branch: continuosIntegration
 
 cache:
   directories:
