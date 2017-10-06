@@ -11,11 +11,11 @@ matrix:
   - php: nightly
   fast_finish: true
 addons:
-  - ssh_know_hosts: migracao.redehumanizasus.net
+  - ssh_know_hosts: web.redehumanizasus.net
 services:
 - mysql
 before_install:
-- echo -e "Host migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- echo -e "Host web.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - mysql -e 'CREATE DATABASE IF NOT EXISTS rhs_test;'
 - pwd
 - ls -la
