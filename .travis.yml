@@ -29,6 +29,8 @@ install:
 - composer install
 script:
 - "./run-tests.sh"
+  
+after_success:
 
 before deploy:
 - openssl aes-256-cbc -K $encrypted_9d4b6ba88ed7_key -iv $encrypted_9d4b6ba88ed7_iv
@@ -36,8 +38,14 @@ before deploy:
 - eval "$(ssh-agent -s)"
 - chmod 600 deploy_key
 - ssh-add deploy_key
-  
-after_success:
+
+deploy:
+- provider: script
+    skip_cleanup: true
+    script: ssh -p22 migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls" 
+    on:
+      branch: develop
+
 cache:
   directories:
   - vendor
