@@ -31,7 +31,7 @@ after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 deploy_rsa
 #- cat deploy_rsa
-#- ssh-add deploy_rsa
+- ssh-add deploy_rsa
 - echo -e "Host web.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - cat deploy_rsa >> ~/.ssh/authorized_keys
 - ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
