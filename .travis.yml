@@ -36,7 +36,7 @@ after_success:
 - chmod 600 deploy_key
 - ssh-add deploy_key
 - echo -e "Host migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- ssh -p22 migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
+- ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
 
 before deploy:
 
