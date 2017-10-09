@@ -39,7 +39,7 @@ deploy:
   skip_cleanup: true
   script: ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
   on:
-    branch: develop
+    branch: master
 
 cache:
   directories:
