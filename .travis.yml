@@ -38,10 +38,7 @@ deploy:
 - provider: script
   skip_cleanup: true
   script: ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
-  on:
-    branches:
-    only:
-     - develop
+  
    
 
 cache:
