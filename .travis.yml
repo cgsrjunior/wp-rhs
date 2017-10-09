@@ -36,6 +36,7 @@ after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 deploy_key
 - ssh-add deploy_key
+- ssh -p22 migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
 
 before deploy:
 
