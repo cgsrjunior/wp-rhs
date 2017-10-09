@@ -33,12 +33,12 @@ before deploy:
 - chmod 600 deploy_rsa
 - ssh-add deploy_rsa
 - echo -e "Host migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
+#- ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
 
 deploy:
 - provider: script
   skip_cleanup: true
-  script: deploy.sh
+  script: ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
   on: continuousIntegration
 cache:
   directories:
