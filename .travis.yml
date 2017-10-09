@@ -39,10 +39,10 @@ before deploy:
 - chmod 600 deploy_key
 - ssh-add deploy_key
 
-deploy:
-- provider: script
-  skip_cleanup: true
-  script: ssh -p22 migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls" 
+#deploy:
+#- provider: script
+ # skip_cleanup: true
+  #script: ssh -p22 migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls" 
   
 cache:
   directories:
