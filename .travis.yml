@@ -38,9 +38,9 @@ before deploy:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
+  script: deploy.sh
   on:
-  branch: continuousIntegration
+  branch: develop
  
   
    
