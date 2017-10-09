@@ -31,14 +31,16 @@ before deploy:
   -in deploy_rsa.enc -out deploy_rsa -d
 - eval "$(ssh-agent -s)"
 - chmod 600 deploy_rsa
+- cat deploy_rsa
 - ssh-add deploy_rsa
-- echo -e "Host migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-#- ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
+- echo -e "Host web.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- cat deploy_rsa >> ~/.ssh/authorized_keys
+- ssh  migracao.redehumanizasus.net@web.redehumanizasus.net "ls"
 
 deploy:
 - provider: script
   skip_cleanup: true
-  script: pwd
+  script: #pwd
   on: continuousIntegration
 cache:
   directories:
