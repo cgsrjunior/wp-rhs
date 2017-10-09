@@ -36,7 +36,7 @@ before deploy:
 
 deploy
 - provider: script
-- skip_cleanup: true
+  skip_cleanup: true
   script: ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
   on:
     branch: master
