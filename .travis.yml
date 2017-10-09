@@ -37,6 +37,11 @@ deploy:
   skip_cleanup: true
   script: echo "Branch Integração Contínua!"
   on: continuousIntegration
+  
+ - provider: script
+  skip_cleanup: true
+  script: echo "Branch Developer!"
+  on: develop
    
 cache:
   directories:
