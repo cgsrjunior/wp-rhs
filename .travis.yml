@@ -40,6 +40,7 @@ deploy:
   script: ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
   on:
     branch: master
+    condition: $MY_ENV = super_awesome
 
 cache:
   directories:
