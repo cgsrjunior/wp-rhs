@@ -49,7 +49,7 @@ before deploy:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: ./deploy.sh
+  script: ssh migracao.redehumanizasus.net@web.redehumanizasus.net "ls"
   on: continuousIntegration
 cache:
   directories:
