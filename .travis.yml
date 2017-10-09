@@ -12,23 +12,20 @@ matrix:
   fast_finish: true
 addons:
 - ssh_know_hosts: migracao.redehumanizasus.net
-
 services:
 - mysql
-
 before_install:
+- openssl aes-256-cbc -K $encrypted_9d4b6ba88ed7_key -iv $encrypted_9d4b6ba88ed7_iv
+  -in deploy_rsa.enc -out deploy_rsa -d
 - mysql -e 'CREATE DATABASE IF NOT EXISTS rhs_test;'
 - pwd
 - ls -la
 - cp tests/wordpress-tests-lib/wp-tests-config-sample.php tests/wordpress-tests-lib/wp-tests-config.php
-
-before script:
-
+before script: 
 install:
 - composer install
 script:
 - "./run-tests.sh"
-  
 after_success:
 - openssl aes-256-cbc -K $encrypted_9d4b6ba88ed7_key -iv $encrypted_9d4b6ba88ed7_iv
   -in deploy_key.enc -out deploy_key -d
@@ -37,14 +34,7 @@ after_success:
 - ssh-add deploy_key
 - echo -e "Host migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
-
-before deploy:
-
-#deploy:
-#- provider: script
- # skip_cleanup: true
-  #script: ssh -p22 migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls" 
-  
+before deploy: 
 cache:
   directories:
   - vendor
