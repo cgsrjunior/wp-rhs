@@ -39,8 +39,10 @@ deploy:
   skip_cleanup: true
   script: ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
   on:
-    branch: master
-    condition: $MY_ENV = super_awesome
+    branches:
+    only:
+     - develop
+   
 
 cache:
   directories:
