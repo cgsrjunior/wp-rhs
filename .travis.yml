@@ -15,8 +15,6 @@ addons:
 services:
 - mysql
 before_install:
-- openssl aes-256-cbc -K $encrypted_9d4b6ba88ed7_key -iv $encrypted_9d4b6ba88ed7_iv
-  -in deploy_rsa.enc -out deploy_rsa -d
 - mysql -e 'CREATE DATABASE IF NOT EXISTS rhs_test;'
 - pwd
 - ls -la
@@ -27,6 +25,8 @@ install:
 script:
 - "./run-tests.sh"
 after_success:
+
+before deploy: 
 - openssl aes-256-cbc -K $encrypted_9d4b6ba88ed7_key -iv $encrypted_9d4b6ba88ed7_iv
   -in deploy_rsa.enc -out deploy_rsa -d
 - eval "$(ssh-agent -s)"
@@ -35,8 +35,6 @@ after_success:
 - echo -e "Host migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
 
-
-before deploy: 
 cache:
   directories:
   - vendor
