@@ -11,7 +11,7 @@ matrix:
   - php: nightly
   fast_finish: true
 addons:
-- ssh_know_hosts: migracao.redehumanizasus.net
+- ssh_know_hosts: medialab.ufg.br
 services:
 - mysql
 before_install:
@@ -32,11 +32,11 @@ before deploy:
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_rsa
 - ssh-add /tmp/deploy_rsa
-- echo -e "Host migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- echo -e "Host medialab.ufg.br\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 deploy:
 - provider: script
   skip_cleanup: true
-  script: ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
+  script: ssh l3p@medialab.ufg.br "ls"
   on: continuousIntegration
 cache:
   directories:
