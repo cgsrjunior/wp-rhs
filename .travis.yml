@@ -35,7 +35,6 @@ before deploy:
 - echo -e "Host migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
 deploy
-
 - provider: script
   skip_cleanup: true
   script: ssh  migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
