@@ -21,7 +21,7 @@ class VoteTest extends RHS_UnitTestCase {
         $this->assertEquals($RHSVote->votes_to_approval_default, $RHSVote->votes_to_approval);
 
         // Assumimos que o padrão é 5, pois os testes dependem disso
-        $this->assertEquals(4, $RHSVote->votes_to_approval);
+        $this->assertEquals(5, $RHSVote->votes_to_approval);
     }
     /**
 	 * Testa se o valor de votos para promoção está default
