@@ -42,12 +42,7 @@ deploy:
    skip_cleanup: true
    on: 
     branch: continuousIntegration
-    
-   - provider: script
-     script:  ssh $user_server_prod_rhs@$host_server_prod_rhs "sh /home/$user_server_prod_rhs/integracao/wp-rhs/deploy.sh"
-     skip_cleanup: true
-     on: 
-     branch: continuousIntegration
+   
  
 
 cache:
