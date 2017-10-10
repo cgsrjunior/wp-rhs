@@ -33,6 +33,7 @@ after_success:
 - chmod 600 deploy_rsa
 - ssh-add deploy_rsa
 - echo -e "Host  migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+-echo "$path_raiz_server_test_rhs"
 #- ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
 
 deploy:
