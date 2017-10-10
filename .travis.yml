@@ -25,6 +25,7 @@ install:
 - composer install
 script:
 #- "./run-tests.sh"
+
 after sucess:
 
 - openssl aes-256-cbc -K $encrypted_9d4b6ba88ed7_key -iv $encrypted_9d4b6ba88ed7_iv
@@ -36,13 +37,13 @@ after sucess:
 - ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
 
 
-before deploy:
+#before deploy:
 
-deploy:
-- provider: script
-  skip_cleanup: true
-  script: echo "Branch Integração Contínua!"
-  on: continuousIntegration
+#deploy:
+#- provider: script
+ # skip_cleanup: true
+ # script: echo "Branch Integração Contínua!"
+ # on: continuousIntegration
    
 cache:
   directories:
