@@ -27,6 +27,7 @@ before script:
 install:
 - composer install
 script: 
+
 after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 deploy_rsa
@@ -39,7 +40,7 @@ deploy:
    script: echo "Integração contínua!"
    skip_cleanup: true
    on: 
-    branch: master
+    branch: develop
     
 
   
