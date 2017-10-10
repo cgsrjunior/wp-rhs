@@ -39,13 +39,9 @@ deploy:
    script: echo "Integração contínua!"
    skip_cleanup: true
    on: 
-    branch: continuousIntegration
+    branch: master
     
-  - provider: script
-   script: echo "Branch Developer!"
-   skip_cleanup: true
-   on: 
-    branch: develop
+
   
 cache:
   directories:
