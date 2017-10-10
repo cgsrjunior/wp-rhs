@@ -33,11 +33,11 @@ after_success:
 - chmod 600 deploy_rsa
 - ssh-add deploy_rsa
 - echo -e "Host  migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
+#- ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
 
 deploy:
  - provider: script
-   script: echo "Integração contínua!"
+   script: ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "sh /home/migracao.redehumanizasus.net/integracao/wp-rhs/deploy.sh"
    skip_cleanup: true
    on: 
     branch: continuousIntegration
