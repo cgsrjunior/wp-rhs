@@ -40,7 +40,7 @@ deploy:
    skip_cleanup: true
    on: 
     branch: continuousIntegration
-  
+    
   - provider: script
    script: echo "Branch Developer!"
    skip_cleanup: true
