@@ -35,10 +35,11 @@ after_success:
 - ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
 
 deploy:
- -provider: script
-  script: echo "branch contínua!"
-  skip_cleanup: true
-  on: continuousIntegration
+ - provider: script
+   script: echo "Integração contínua!"
+   skip_cleanup: true
+   on: 
+    branch: continuousIntegration
   
   
 cache:
