@@ -13,6 +13,10 @@ fi
 
 sh compile-sass.sh
 cd public
+
+mv htaccess-sample htaccess
+mv wp-config-sample.php wp-config.php
+
 wp rewrite flush
 wp language core update
 cd migration-scripts
