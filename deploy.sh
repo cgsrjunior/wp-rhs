@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git pull /home/migracao.redehumanizasus.net/integracao/wp-rhs
+git pull 
 
 if [ $1 = 'dev' ]
 then
@@ -9,9 +9,9 @@ else
     composer install --no-dev
 fi
 
-sh /home/migracao.redehumanizasus.net/integracao/wp-rhs/compile-sass.sh
-cd /home/migracao.redehumanizasus.net/integracao/wp-rhs/public
+sh compile-sass.sh
+cd public
 wp rewrite flush
 wp language core update
-cd /home/migracao.redehumanizasus.net/integracao/wp-rhsmigration-scripts
+cd ../migration-scripts
 php rhs_migrations.php all
