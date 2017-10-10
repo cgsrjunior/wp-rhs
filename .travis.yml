@@ -40,7 +40,7 @@ deploy:
    script: echo "Integração contínua!"
    skip_cleanup: true
    on: 
-    branch: develop
+    branch: continuousIntegration
     
 
   
