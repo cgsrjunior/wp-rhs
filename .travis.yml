@@ -33,6 +33,14 @@ after_success:
 - ssh-add deploy_rsa
 - echo -e "Host  migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
+
+deploy:
+ -provider: script
+  script: echo "branch contínua!"
+  skip_cleanup: true
+  on: continuousIntegration
+  
+  
 cache:
   directories:
   - vendor
