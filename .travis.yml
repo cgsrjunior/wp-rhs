@@ -15,14 +15,6 @@ addons:
 services:
 - mysql
 before_install:
-- openssl aes-256-cbc -K $encrypted_9d4b6ba88ed7_key -iv $encrypted_9d4b6ba88ed7_iv
-  -in deploy_rsa.enc -out deploy_rsa -d
-- eval "$(ssh-agent -s)"
-- chmod 600 deploy_rsa
-- ssh-add deploy_rsa
-- echo -e "Host  migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
-
 
 - mysql -e 'CREATE DATABASE IF NOT EXISTS rhs_test;'
 - pwd
@@ -32,8 +24,17 @@ before script:
 install:
 - composer install
 script:
-- "./run-tests.sh"
+#- "./run-tests.sh"
 after sucess:
+
+- openssl aes-256-cbc -K $encrypted_9d4b6ba88ed7_key -iv $encrypted_9d4b6ba88ed7_iv
+  -in deploy_rsa.enc -out deploy_rsa -d
+- eval "$(ssh-agent -s)"
+- chmod 600 deploy_rsa
+- ssh-add deploy_rsa
+- echo -e "Host  migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
+
 
 before deploy:
 
