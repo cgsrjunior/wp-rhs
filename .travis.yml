@@ -34,6 +34,10 @@ after_success:
 - ssh-add deploy_rsa
 - echo -e "Host  $host_server_test_rhs\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
+- echo "$host_server_test_rhs"
+- echo "$user_server_test_rhs@$host_server_test_rhs"
+- echo "$path_raiz_server_test_rhs"
+
 #- ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
 
 deploy:
