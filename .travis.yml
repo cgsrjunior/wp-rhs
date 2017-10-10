@@ -22,6 +22,7 @@ before_install:
 - pwd
 - ls -la
 - cp tests/wordpress-tests-lib/wp-tests-config-sample.php tests/wordpress-tests-lib/wp-tests-config.php
+
 before script: 
 install:
 - composer install
@@ -35,6 +36,7 @@ after_success:
 
 
 deploy:
+
  - provider: script
    script:  ssh $user_server_test_rhs@$host_server_test_rhs "sh /home/$user_server_test_rhs/integracao/wp-rhs/deploy.sh"
    skip_cleanup: true
@@ -42,10 +44,10 @@ deploy:
     branch: continuousIntegration
     
    - provider: script
-   script:  ssh $user_server_prod_rhs@$host_server_prod_rhs "sh /home/$user_server_prod_rhs/integracao/wp-rhs/deploy.sh"
-   skip_cleanup: true
-   on: 
-    branch: continuousIntegration
+     script:  ssh $user_server_prod_rhs@$host_server_prod_rhs "sh /home/$user_server_prod_rhs/integracao/wp-rhs/deploy.sh"
+     skip_cleanup: true
+     on: 
+     branch: continuousIntegration
  
 
 cache:
