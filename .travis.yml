@@ -37,7 +37,7 @@ after_success:
 
 deploy:
  - provider: script
-   script:  ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net " git pull /home/migracao.redehumanizasus.net/integracao/wp-rhs/"
+   script:  ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "sh /home/migracao.redehumanizasus.net/integracao/wp-rhs/deploy.sh"
    skip_cleanup: true
    on: 
     branch: continuousIntegration
