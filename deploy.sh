@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/migracao.redehumanizasus.net/integracao/wp-rhs/ 
+cd ~/integracao/wp-rhs/ 
 
 git pull
 
