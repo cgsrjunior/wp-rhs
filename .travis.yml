@@ -11,7 +11,7 @@ matrix:
   - php: nightly
   fast_finish: true
 addons:
-- ssh_know_hosts: migracao.redehumanizasus.net
+- ssh_know_hosts: $host_server_test_rhs
 services:
 - mysql
 before_install:
@@ -32,13 +32,13 @@ after_success:
 - eval "$(ssh-agent -s)"
 - chmod 600 deploy_rsa
 - ssh-add deploy_rsa
-- echo -e "Host  migracao.redehumanizasus.net\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- echo "$path_raiz_server_test_rhs"
+- echo -e "Host  $host_server_test_rhs\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
 #- ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "ls"
 
 deploy:
  - provider: script
-   script:  ssh migracao.redehumanizasus.net@migracao.redehumanizasus.net "sh $path_raiz_server_test_rhs/wp-rhs/deploy.sh"
+   script:  ssh $user_server_test_rhs@$host_server_test_rhs "sh $path_raiz_server_test_rhsintegracao/wp-rhs/deploy.sh"
    skip_cleanup: true
    on: 
     branch: continuousIntegration
