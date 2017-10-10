@@ -41,6 +41,11 @@ deploy:
    on: 
     branch: continuousIntegration
   
+  - provider: script
+   script: echo "Branch Developer!"
+   skip_cleanup: true
+   on: 
+    branch: develop
   
 cache:
   directories:
