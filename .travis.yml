@@ -14,13 +14,15 @@ addons:
 - ssh_know_hosts: 
    - $host_server_test_rhs
    - $host_server_prod_rhs
+apt:
+  packages:
+      - sshpass
+      
 services:
 - mysql
 before_install:
 - openssl aes-256-cbc -K $encrypted_9d4b6ba88ed7_key -iv $encrypted_9d4b6ba88ed7_iv
   -in deploy_rsa.enc -out deploy_rsa -d 
-
-
 - mysql -e 'CREATE DATABASE IF NOT EXISTS rhs_test;'
 - pwd
 - ls -la
