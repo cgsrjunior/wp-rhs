@@ -23,7 +23,7 @@ before_install:
 - mysql -e 'CREATE DATABASE IF NOT EXISTS rhs_test;'
 - pwd
 - ls -la
-- cp tests/wordpress-tests-lib/wp-tests-config-sample.php tests/wordpress-tests-lib/wp-tests-config.php
+- cp tests/wordpress-tests-lib/wp-tests-config-sample.php tests/wordpress-tests-lib/wp-tests-config.php 
 
 before script: 
 install:
