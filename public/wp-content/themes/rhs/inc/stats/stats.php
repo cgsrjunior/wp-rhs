@@ -42,7 +42,6 @@ class RHSStats {
         add_action( 'rhs_delete_user_follow_post', array( &$this, 'post_unfollow'));
         add_action( 'rhs_add_recommend_post', array( &$this, 'recommend_post'));
         add_action( 'rhs_user_deleted', array( &$this, 'user_deleted'));
-
     }
     
     function login($user_login, $user) {

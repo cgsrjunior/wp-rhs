@@ -24,8 +24,8 @@ class RHSRecommendPost extends RHSMessage {
 
         $users = new WP_User_Query(array(
             'search'         => '*' . esc_attr( $_POST['string'] ) . '*',
-            'search_columns' => array('user_nicename','display_name'),
-            'number'         => 150,
+            'search_columns' => array( 'user_nicename', 'user_email' ),
+            'number'         => -1,
             'orderby'        => 'display_name',
         ) );
 
@@ -50,25 +50,22 @@ class RHSRecommendPost extends RHSMessage {
         $this->clear_messages();
 
         $current_user = wp_get_current_user();
-
+        $user = new RHSUser(get_userdata($_POST['user_id']));
         $user_id = $_POST['user_id'];
-        $user = new RHSUser(get_userdata($user_id));
-        if($user instanceof RHSUser) {        
-            $post_id = $_POST['post_id'];
-            $_user_name = $user->get_name();
-            $data['user'] = array(
-                'user_id' => $user_id,
-                'post_id' => $post_id,
-                'recommend_from' => $current_user->ID,
-                'value' => $user->display_name,
-                'sent_name' => $_user_name
-            );
-            $this->set_messages($_user_name . ' recebeu a indicação de leitura', false, 'success');
-            $data['messages'] = $this->messages();
-            $this->add_recomment_post($post_id, $user_id, $current_user, $data);
-        } else {
-            $data['msgErr'] = "Usuário não encontrado. Tente novamente mais tarde!";
-        }
+        $post_id = $_POST['post_id'];
+        
+        $data['user'] = array(
+            'user_id' => $user_id,
+            'post_id' => $post_id,
+            'recommend_from' => $current_user->ID,
+            'value' => $user->display_name
+        );
+
+        $this->set_messages($user->get_name() . ' recebeu a indicação de leitura', false, 'success');
+
+        $data['messages'] = $this->messages();
+        
+        $this->add_recomment_post($post_id, $user_id, $current_user, $data);
 
         echo json_encode($data);
         exit;
