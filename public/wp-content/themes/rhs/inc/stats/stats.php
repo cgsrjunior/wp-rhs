@@ -17,10 +17,6 @@ class RHSStats {
     const ACTION_SHARE = 'share';
     const ACTION_POST_RECOMMEND = 'post_recommend';
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> c3db145de6540faa6dac0bc356582a700f8ee0a7
     private $table;
 
     /**
@@ -44,14 +40,9 @@ class RHSStats {
         add_action( 'rhs_add_network_data', array( &$this, 'network_data'), 10, 2);
         add_action( 'rhs_add_user_follow_post', array( &$this, 'post_follow'));
         add_action( 'rhs_delete_user_follow_post', array( &$this, 'post_unfollow'));
-<<<<<<< HEAD
         add_action( 'rhs_add_recommend_post', array( &$this, 'recommend_post'));
         add_action( 'rhs_user_deleted', array( &$this, 'user_deleted'));
 
-=======
-        add_action( 'rhs_add_recommend_post', array( &$this, 'recommend_post'));        
-        
->>>>>>> c3db145de6540faa6dac0bc356582a700f8ee0a7
     }
     
     function login($user_login, $user) {
