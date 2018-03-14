@@ -59,7 +59,7 @@ class RHSRecommendPost extends RHSMessage {
         $temp_data = str_replace("\\", "",$users_selected);
         $users_selected = json_decode($temp_data);
 
-        foreach($users_selected as $key=>$user){
+        foreach($users_selected as $key=>$user) {
             $user_id = $user->user_id;
             $user = new RHSUser(get_userdata($user_id));
             if($user instanceof RHSUser) {
