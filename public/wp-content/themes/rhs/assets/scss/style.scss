@@ -252,3 +252,13 @@ body {
 .extra-small-type {
     font-size: 60%;
 }
+
+.btn-recommend {
+    background: $primeira_cor_texto;
+    border-color: $primeira_cor_texto;
+    float: right;
+    &:hover {
+        background: rgba(0, 180, 180, 0.52);
+        border-color: rgba(0, 180, 180, 0.52);
+    }
+}
