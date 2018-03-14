@@ -54,6 +54,9 @@ $(function() {
                 $(button_to_submit_recommend).text('Enviar');
             }
         });
-    
+    });
+
+    $(ms).on('focus', function(c){
+        $(button_to_submit_recommend).text('Enviar');
     });
 });
