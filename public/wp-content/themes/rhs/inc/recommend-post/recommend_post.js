@@ -10,14 +10,17 @@ $(function() {
         },
         method: 'post',
         valueField: 'user_id',
-        placeholder: 'Insira o nome do usuário',
+        placeholder: 'Pesquise por um ou mais usuários',
         allowFreeEntries: false,
         maxSuggestions: 10,
         noSuggestionText: 'Sem sugestões para {{query}}',
+        hideTrigger: true,
         renderer: function(data){
             return '<div style="padding: 5px; overflow:hidden;">' +
+                '<div style="float: left;"><img src="' + data.avatar + '" width="32px"/></div>' +
                 '<div style="float: left; margin-left: 5px">' +
                     '<div style="font-weight: bold; color: #333; font-size: 14px; line-height: 13px">' + data.name + '</div>' +
+                    '<div style="color: #999; font-size: 9px">' + data.location + '</div>' +
                 '</div>' +
             '</div><div style="clear:both;"></div>';
         }
