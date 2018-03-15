@@ -30,10 +30,15 @@ class RHSRecommendPost extends RHSMessage {
         ));
 
         foreach ($users->results as $user) {
-
+            $user_ufmun = get_user_ufmun($user->ID);
+            $uf = return_value_or_dash($user_ufmun['uf']['sigla']);
+            $mun = return_value_or_dash($user_ufmun['mun']['nome']);
+            
             $data[] = array(
                 'user_id'  => $user->ID,
-                'name' => $user->display_name
+                'name' => $user->display_name,
+                'avatar' => get_avatar_url($user->ID, array("size"=>32)),
+                'location' => $mun . ', ' . $uf,
             );
         }
         
