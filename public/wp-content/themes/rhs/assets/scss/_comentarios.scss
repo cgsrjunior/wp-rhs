@@ -3,7 +3,8 @@
 * Comentarios
 *
 **************/
-.panel-comentarios {
+.panel-comentarios,
+.panel-recommend {
     background-color: $whiteColor;
     border-width: 0px;
     .titulo-quantidade {
@@ -15,7 +16,8 @@
     }
     #respond {
         margin-top: 2%;
-        .btn-comentar {
+        .btn-comentar,
+        .btn-recommend {
             background: $primeira_cor_texto;
             border-color: $primeira_cor_texto;
             float: right;
