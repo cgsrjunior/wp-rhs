@@ -13,6 +13,7 @@ class RHSRewriteRules {
     const PROFILE_URL = 'perfil';
     const POST_URL = 'publicar-postagem';
     const POSTAGENS_URL = 'minhas-postagens';
+    const STATISTICS = 'statistics';
     const COMUNIDADES = 'comunidades';
     const NOTIFICACOES = 'notificacoes';
     const FOLLOW_URL = 'seguindo';
@@ -29,21 +30,22 @@ class RHSRewriteRules {
     function rewrite_rules( &$wp_rewrite ) {
         
         $new_rules = array(
-            self::LOGIN_URL . "/?$"             => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::LOGIN_URL,
-            self::REGISTER_URL . "/?$"          => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::REGISTER_URL,
-            self::LOST_PASSWORD_URL . "/?$"     => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::LOST_PASSWORD_URL,
-            self::RETRIEVE_PASSWORD_URL . "/?$" => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::RETRIEVE_PASSWORD_URL,
-            self::RESET_PASS_URL . "/?$"        => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::RESET_PASS_URL,
-            self::RP_URL . "/?$"                => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::RP_URL,
-            self::VOTING_QUEUE_URL . "/?$"      => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::VOTING_QUEUE_URL,
-            self::PROFILE_URL . "/?$"           => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::PROFILE_URL,
-            self::PROFILE_URL . "/([^/]+)/?$"   => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::PROFILE_URL . "&rhs_user=" . $wp_rewrite->preg_index(1),
-            self::POST_URL . "/?$"              => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::POST_URL,
-            self::POST_URL . "/([^/]+)/?$"      => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::POST_URL . "&rhs_edit_post=" . $wp_rewrite->preg_index(1),
-            self::POSTAGENS_URL . "/?$"         => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::POSTAGENS_URL,
-            self::COMUNIDADES . "/?$"           => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::COMUNIDADES,
-            self::NOTIFICACOES . "/?$"           => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::NOTIFICACOES,
-            self::NOTIFICACOES . "/page/([0-9]+)/?$"           => 'index.php?rhs_custom_login=1&rhs_login_tpl='. self::NOTIFICACOES . '&rhs_paged=$matches[1]',
+            self::LOGIN_URL . "/?$"                     => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::LOGIN_URL,
+            self::REGISTER_URL . "/?$"                  => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::REGISTER_URL,
+            self::LOST_PASSWORD_URL . "/?$"             => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::LOST_PASSWORD_URL,
+            self::RETRIEVE_PASSWORD_URL . "/?$"         => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::RETRIEVE_PASSWORD_URL,
+            self::RESET_PASS_URL . "/?$"                => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::RESET_PASS_URL,
+            self::RP_URL . "/?$"                        => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::RP_URL,
+            self::VOTING_QUEUE_URL . "/?$"              => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::VOTING_QUEUE_URL,
+            self::PROFILE_URL . "/?$"                   => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::PROFILE_URL,
+            self::PROFILE_URL . "/([^/]+)/?$"           => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::PROFILE_URL . "&rhs_user=" . $wp_rewrite->preg_index(1),
+            self::POST_URL . "/?$"                      => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::POST_URL,
+            self::POST_URL . "/([^/]+)/?$"              => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::POST_URL . "&rhs_edit_post=" . $wp_rewrite->preg_index(1),
+            self::POSTAGENS_URL . "/?$"                 => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::POSTAGENS_URL,
+            self::COMUNIDADES . "/?$"                   => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::COMUNIDADES,
+            self::STATISTICS . "/?$"                    => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::STATISTICS,
+            self::NOTIFICACOES . "/?$"                  => "index.php?rhs_custom_login=1&rhs_login_tpl=" . self::NOTIFICACOES,
+            self::NOTIFICACOES . "/page/([0-9]+)/?$"    => 'index.php?rhs_custom_login=1&rhs_login_tpl='. self::NOTIFICACOES . '&rhs_paged=$matches[1]',
 
             /* Busca */
             RHSSearch::BASE_URL . '/?$'                                          => "index.php?rhs_busca=posts&rhs_login_tpl=search",
@@ -116,8 +118,6 @@ class RHSRewriteRules {
         }
 
         return $template;
-
-
     }
 
     private function rewrite_permitions($url){
