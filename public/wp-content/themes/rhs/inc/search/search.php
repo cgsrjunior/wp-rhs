@@ -616,7 +616,7 @@ class RHSSearch {
                         <th>Nome do Usuário</th>
                         <th>Data de Cadastro</th>
                         <th>Total de Postagens</th>
-                        <th>Total de Comentários do usuário</th>
+                        <th>Total de Comentários Realizados</th>
                         <th>Total de Votos Recebidos</th>
                         <th>Estado</th>
                         <th>Cidade</th>
@@ -762,8 +762,7 @@ class RHSSearch {
 	    header('Expires: 0');
 
 	    if($pagename == 'users') {
-		    fputcsv($file, array('Nome do Usuário', 'Data de Cadastro', 'Total de Postagens', 'Total de Comentários do usuário', 'Total de Votos Recebidos', 'Estado', 'Cidade'));
-
+		    fputcsv($file, array('Nome do Usuário', 'Data de Cadastro', 'Total de Postagens', 'Total de Comentários Realizados', 'Total de Votos Recebidos', 'Estado', 'Cidade'));
 		    foreach($content_file as $user) {
 
 			    $comments_total = $wpdb->get_var($wpdb->prepare( "SELECT COUNT(*) AS total FROM $wpdb->comments WHERE comment_approved = 1 AND user_id = %s", $user->ID));
