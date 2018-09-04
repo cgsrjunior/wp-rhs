@@ -108,7 +108,6 @@ class RHSRewriteRules {
         global $wp_query;
 
         if ( $wp_query->get( 'rhs_login_tpl' ) ) {
-
             $this->rewrite_permitions($wp_query->get( 'rhs_login_tpl' ));
 
             if ( file_exists( STYLESHEETPATH . '/' . $wp_query->get( 'rhs_login_tpl' ) . '.php' ) ) {
